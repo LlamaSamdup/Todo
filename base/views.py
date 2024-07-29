@@ -22,7 +22,17 @@ def create(request):
     return render(request, 'create.html')
 
 
-def edit(request):
-    return render(request, 'edit.html')
+def edit(request,pk):
+    todo_obj = Todo.objects.get(id=pk)
+    if request.method == 'POST':
+        todo_obj.name = request.POST.get('name')
+        todo_obj.description = request.POST.get('description')
+        todo_obj.status = request.POST.get('status')
+
+        todo_obj.save()
+        return redirect('home')
+
+    data_dict = {'todo': todo_obj}
+    return render(request, 'edit.html', context=data_dict)
 
 
