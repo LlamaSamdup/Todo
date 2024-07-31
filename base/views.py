@@ -35,4 +35,9 @@ def edit(request,pk):
     data_dict = {'todo': todo_obj}
     return render(request, 'edit.html', context=data_dict)
 
+def delete(request,pk):
+    todo_obj = Todo.objects.get(id=pk)
+    todo_obj.delete()
+    return redirect('home')
+
 

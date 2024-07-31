@@ -10,12 +10,8 @@
 
 </head>
 <body>
-    <h1>This is our homepage</h1>
-    <!-- {% for i in todos %}
-        <p>{{i.name}}</p>
-        <p>{{i.description}}</p>
-        <p>{{i.status}}</p>
-    {% endfor %} -->
+
+    {% include 'nav.html' %}
 
     <table class="table">
         <thead>
@@ -34,7 +30,7 @@
                     <td>{{i.name}}</td>
                     <td>{{i.description}}</td>
                     <td>{{i.status}}</td>
-                    <td><a href="{% url 'edit' pk=i.id %}"><button class="btn btn-warning">Edit</button></a></td>
+                    <td><a href="{% url 'edit' pk=i.id %}"><button class="btn btn-warning">Edit</button></a> <a href="{% url 'delete' pk=i.id%}"> <button class="btn btn-danger"> Delete </button> </a> </td>
                 </tr>
             {% endfor %}
   
